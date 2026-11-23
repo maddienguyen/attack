@@ -1,0 +1,1577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>An Evening Planned with Love 🌿 | Sahil & Maddie</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            forest: {
+              950: '#04130b',
+              900: '#071e12',
+              800: '#0c2e1d',
+              700: '#11442c',
+              600: '#1b6140',
+              500: '#238356',
+              400: '#34a872',
+              300: '#5dc593',
+              200: '#99e2be',
+              100: '#d1fae5',
+              50: '#ecfdf5',
+            },
+            emeraldGlow: '#10b981',
+            sageGreen: '#8fae98',
+            goldChampagne: '#f0dfb8',
+            warmGold: '#d4af37',
+          },
+          fontFamily: {
+            serif: ['Playfair Display', 'Georgia', 'serif'],
+            script: ['Cormorant Garamond', 'serif'],
+            sans: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #04130b;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #11442c;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #1b6140;
+    }
+
+    /* Ambient Green Glows */
+    .glow-sphere {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+      opacity: 0.35;
+      z-index: 0;
+      animation: floatPulse 9s ease-in-out infinite alternate;
+    }
+    @keyframes floatPulse {
+      0% { transform: scale(1) translateY(0); opacity: 0.25; }
+      100% { transform: scale(1.15) translateY(-25px); opacity: 0.45; }
+    }
+
+    /* Glass Panels */
+    .glass-card {
+      background: rgba(12, 46, 29, 0.45);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(153, 226, 190, 0.18);
+      box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    }
+    .glass-card:hover {
+      border-color: rgba(153, 226, 190, 0.35);
+    }
+
+    .glass-gold {
+      background: rgba(240, 223, 184, 0.08);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Slideshow stage transitions */
+    .slide-deck {
+      display: flex;
+      width: 300%;
+      height: 100vh;
+      transition: transform 0.85s cubic-bezier(0.19, 1, 0.22, 1);
+      will-change: transform;
+    }
+    .slide-panel {
+      width: 100vw;
+      height: 100vh;
+      flex-shrink: 0;
+      position: relative;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+
+    /* Polaroid Styles */
+    .polaroid {
+      background: #f7f9f7;
+      padding: 12px 12px 28px 12px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 2px 6px rgba(0, 0, 0, 0.3);
+      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+    }
+    .polaroid:hover {
+      transform: translateY(-8px) scale(1.03) rotate(0deg) !important;
+      box-shadow: 0 30px 60px rgba(16, 185, 129, 0.25), 0 5px 15px rgba(0, 0, 0, 0.5);
+      z-index: 20;
+    }
+
+    /* Delicate tape */
+    .tape {
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(2px);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Wax Seal */
+    .wax-seal {
+      width: 58px;
+      height: 58px;
+      background: radial-gradient(circle at 35% 35%, #e6be60, #a0781e 65%, #6e4e0b);
+      border-radius: 50%;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .wax-seal:hover {
+      transform: scale(1.08) rotate(5deg);
+      box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5);
+    }
+
+    /* Rotating vinyl */
+    @keyframes spinDisc {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .spinning-disc {
+      animation: spinDisc 6s linear infinite;
+    }
+    .paused-disc {
+      animation-play-state: paused;
+    }
+
+    /* Shimmering Button */
+    .shimmer-btn {
+      background: linear-gradient(135deg, #11442c 0%, #1b6140 50%, #238356 100%);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    .shimmer-btn::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        60deg,
+        transparent 30%,
+        rgba(255, 255, 255, 0.2) 50%,
+        transparent 70%
+      );
+      transform: rotate(30deg);
+      transition: transform 0.75s ease;
+    }
+    .shimmer-btn:hover::after {
+      transform: rotate(30deg) translate(50%, 50%);
+    }
+    .shimmer-btn:hover {
+      box-shadow: 0 0 25px rgba(52, 211, 153, 0.45);
+      transform: translateY(-2px);
+    }
+
+    /* Equalizer animation */
+    .eq-bar {
+      width: 3px;
+      background: #34d399;
+      border-radius: 2px;
+      animation: eqBounce 1.2s ease-in-out infinite alternate;
+    }
+    @keyframes eqBounce {
+      0% { height: 4px; }
+      100% { height: 20px; }
+    }
+  </style>
+</head>
+<body class="bg-forest-950 text-forest-50 font-sans min-h-screen antialiased selection:bg-emerald-500 selection:text-forest-950 relative overflow-x-hidden">
+
+  <!-- Ambient Background Canvas for Floating Starlight/Leaves -->
+  <canvas id="ambientCanvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
+
+  <!-- Ambient Radial Glows (Deep Romantic Forest Palette) -->
+  <div class="glow-sphere bg-emerald-700 w-[550px] h-[550px] -top-32 -left-32"></div>
+  <div class="glow-sphere bg-forest-600 w-[600px] h-[600px] top-1/2 -right-48"></div>
+  <div class="glow-sphere bg-teal-800 w-[450px] h-[450px] bottom-10 left-1/4"></div>
+
+  <!-- ========================================================
+       TOP GLOBAL FLOATING NAV (Visible Everywhere)
+  ======================================================== -->
+  <header class="fixed top-4 left-0 right-0 z-40 px-4 md:px-8 max-w-6xl mx-auto flex items-center justify-between pointer-events-none">
+    <!-- Brand / Identity -->
+    <div class="pointer-events-auto flex items-center gap-3 px-4 py-2 rounded-full glass-card border border-emerald-400/20 backdrop-blur-lg shadow-lg">
+      <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+      <span class="font-serif italic text-emerald-200 text-sm tracking-wider">Sahil & Maddie</span>
+      <span class="text-xs text-forest-300 font-light border-l border-forest-600/60 pl-2">Date Night Plan</span>
+    </div>
+
+    <!-- Right Controls: Audio Player & Slide Replay Switch -->
+    <div class="pointer-events-auto flex items-center gap-3">
+      <!-- Music Player Pill -->
+      <div id="musicPill" class="flex items-center gap-3 px-3.5 py-1.5 rounded-full glass-card border border-emerald-400/20 shadow-lg transition-all hover:border-emerald-400/50 cursor-pointer" onclick="toggleAudio()">
+        <div id="vinylDisc" class="w-7 h-7 rounded-full bg-forest-950 border border-emerald-300/40 flex items-center justify-center relative overflow-hidden spinning-disc paused-disc shadow-inner">
+          <div class="w-2 h-2 rounded-full bg-goldChampagne"></div>
+        </div>
+        <div class="hidden sm:flex flex-col text-left pr-1">
+          <span class="text-[11px] font-semibold tracking-wide text-emerald-100 flex items-center gap-1.5">
+            Notion
+            <span id="playingDot" class="w-1.5 h-1.5 rounded-full bg-emerald-400 hidden"></span>
+          </span>
+          <span class="text-[9px] text-forest-300">The Rare Occasions</span>
+        </div>
+        <div id="eqBars" class="flex items-end gap-1 h-4 opacity-50">
+          <span class="eq-bar" style="animation-delay: 0.1s; height: 6px;"></span>
+          <span class="eq-bar" style="animation-delay: 0.3s; height: 12px;"></span>
+          <span class="eq-bar" style="animation-delay: 0.2s; height: 8px;"></span>
+        </div>
+        <button id="audioToggleBtn" class="p-1 rounded-full text-emerald-300 hover:text-white transition" aria-label="Toggle music">
+          <i id="playIcon" data-lucide="play" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+      <!-- Slideshow Navigation / Replay Pill (Only visible on True Home Page) -->
+      <button onclick="goToSlide(0)" id="replaySlidesBtn" class="hidden items-center gap-2 px-3.5 py-2 rounded-full glass-card text-xs text-emerald-200 hover:text-white hover:bg-forest-800/60 transition border border-emerald-400/20 shadow-lg">
+        <i data-lucide="sparkles" class="w-3.5 h-3.5 text-goldChampagne"></i>
+        <span>Intro Slides</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Audio Element -->
+  <audio id="romanticBgm" loop preload="auto">
+    <source src="./assets/Notion.mp3" type="audio/mp3">
+  </audio>
+
+
+  <!-- ========================================================
+       SLIDESHOW / INTRO & MAIN SITE MASTER CONTAINER
+  ======================================================== -->
+  <div id="slideDeck" class="slide-deck">
+
+    <!-- ────────────────────────────────────────────────────────
+         SLIDE 1: THE INVITATION (The Opening Slide)
+    ──────────────────────────────────────────────────────── -->
+    <section class="slide-panel flex flex-col items-center justify-center px-4 pt-20 pb-8 relative overflow-hidden">
+      <div class="max-w-3xl mx-auto w-full relative z-10 flex flex-col items-center text-center my-auto">
+        
+        <!-- Subtle Top Badge -->
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full glass-card border border-emerald-400/30 text-emerald-300 text-[11px] tracking-widest uppercase mb-3 shadow-sm">
+          <i data-lucide="leaf" class="w-3 h-3 text-emerald-400"></i>
+          <span>Chapter I &bull; An Exclusive Invitation</span>
+        </div>
+
+        <!-- Main Title -->
+        <h1 class="font-serif text-3xl sm:text-5xl font-bold tracking-tight text-white mb-1 leading-tight">
+          Hey handsome<span class="text-emerald-400">...</span>
+        </h1>
+        <p class="font-script text-lg sm:text-xl text-emerald-200/90 italic mb-3 max-w-lg mx-auto">
+          "I wanted to craft a night designed completely around us."
+        </p>
+
+        <!-- Romantic Polaroid Teaser (holding.jpg) -->
+        <div class="my-2 relative group">
+          <div class="tape absolute -top-3 left-1/2 -translate-x-1/2 w-24 h-6 z-20 rotate-[-2deg] rounded-sm"></div>
+          <div class="polaroid rotate-[-2deg] max-w-[220px] sm:max-w-[240px] mx-auto text-left cursor-pointer transition transform">
+            <div class="w-full aspect-[4/5] overflow-hidden rounded-sm bg-forest-900 relative">
+              <img src="./assets/holding.jpg" alt="Holding hands" class="w-full h-full object-cover object-center filter brightness-[0.98] contrast-[1.03] group-hover:scale-105 transition duration-700" />
+              <div class="absolute inset-0 bg-gradient-to-t from-forest-950/40 via-transparent to-transparent"></div>
+            </div>
+            <p class="font-serif italic text-forest-900 text-xs mt-2 text-center tracking-wide font-medium">
+              holding onto you, always 🤍
+            </p>
+          </div>
+          <!-- Sparkle accent -->
+          <div class="absolute -bottom-2 -right-3 p-1.5 rounded-full glass-gold text-warmGold shadow-lg animate-bounce">
+            <i data-lucide="heart" class="w-3.5 h-3.5 fill-warmGold"></i>
+          </div>
+        </div>
+
+        <!-- Short Description -->
+        <p class="text-forest-200/80 text-xs sm:text-sm max-w-md mx-auto mb-5 leading-relaxed font-light">
+          No stress, no rush. Just you and me, delicious food, our favorite laughs, and an evening made with love.
+        </p>
+
+        <!-- Slide Controls -->
+        <div class="flex flex-col sm:flex-row items-center gap-3">
+          <button onclick="goToSlide(1)" class="shimmer-btn px-7 py-2.5 rounded-full text-white font-medium text-xs sm:text-sm flex items-center gap-2.5 shadow-xl group border border-emerald-400/40">
+            <span>Slip to the next page</span>
+            <i data-lucide="arrow-right" class="w-4 h-4 text-emerald-200 group-hover:translate-x-1 transition-transform"></i>
+          </button>
+          
+          <button onclick="goToSlide(2)" class="px-4 py-2 rounded-full text-xs text-forest-300 hover:text-emerald-200 transition">
+            Skip intro directly to date plan &darr;
+          </button>
+        </div>
+
+        <!-- Slide Progress Indicator -->
+        <div class="flex items-center gap-2 mt-5">
+          <span class="w-8 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)]"></span>
+          <span class="w-2 h-1.5 rounded-full bg-forest-800"></span>
+          <span class="w-2 h-1.5 rounded-full bg-forest-800"></span>
+          <span class="text-[11px] text-forest-400 ml-2 font-mono">1 / 3</span>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ────────────────────────────────────────────────────────
+         SLIDE 2: THE JOURNEY & ANTICIPATION (The Middle Slip)
+    ──────────────────────────────────────────────────────── -->
+    <section class="slide-panel flex flex-col items-center justify-center px-4 pt-16 pb-8 relative overflow-hidden">
+      <div class="max-w-5xl mx-auto w-full relative z-10 flex flex-col items-center text-center">
+
+        <!-- Top Badge -->
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full glass-card border border-emerald-400/30 text-emerald-300 text-[11px] tracking-widest uppercase mb-2 shadow-sm">
+          <i data-lucide="heart" class="w-3 h-3 text-emerald-400"></i>
+          <span>Chapter II &bull; The Little Moments</span>
+        </div>
+
+        <!-- Heading -->
+        <h2 class="font-serif text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white mb-1 leading-tight">
+          Every moment with you is my favorite.
+        </h2>
+        <p class="font-script text-base sm:text-lg text-emerald-200/90 italic mb-3 max-w-2xl mx-auto">
+          "From silly late-night talks to building dreams together, you make everything warmer."
+        </p>
+
+        <!-- Polaroid Multi-Card Collage Preview (Using 8.jpg, 6.jpg, 10.jpg) -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 my-2 w-full max-w-3xl">
+          
+          <!-- Polaroid 1 -->
+          <div class="polaroid rotate-[-3deg] hover:rotate-0 transition">
+            <div class="w-full aspect-[4/3] overflow-hidden rounded-sm bg-forest-900">
+              <img src="./assets/8.jpg" alt="Sweet memory" class="w-full h-full object-cover filter brightness-[0.98]" />
+            </div>
+            <p class="font-serif italic text-forest-900 text-xs mt-2 text-center font-medium">unfiltered laughter ✨</p>
+          </div>
+
+          <!-- Polaroid 2 (Centerpiece) -->
+          <div class="polaroid rotate-[1.5deg] hover:rotate-0 transition sm:-translate-y-2">
+            <div class="w-full aspect-[4/3] overflow-hidden rounded-sm bg-forest-900">
+              <img src="./assets/6.jpg" alt="Cozy memory" class="w-full h-full object-cover filter brightness-[0.98]" />
+            </div>
+            <p class="font-serif italic text-forest-900 text-xs mt-2 text-center font-medium">my safe place 🌿</p>
+          </div>
+
+          <!-- Polaroid 3 -->
+          <div class="polaroid rotate-[3.5deg] hover:rotate-0 transition">
+            <div class="w-full aspect-[4/3] overflow-hidden rounded-sm bg-forest-900">
+              <img src="./assets/10.jpg" alt="Adventure memory" class="w-full h-full object-cover filter brightness-[0.98]" />
+            </div>
+            <p class="font-serif italic text-forest-900 text-xs mt-2 text-center font-medium">adventure with you 💫</p>
+          </div>
+
+        </div>
+
+        <!-- Sneak Peek Highlights -->
+        <div class="flex flex-wrap items-center justify-center gap-2.5 my-6 max-w-2xl">
+          <span class="px-3 py-1.5 rounded-full text-xs glass-card text-emerald-200 border border-emerald-400/20 flex items-center gap-1.5">
+            <i data-lucide="blocks" class="w-3.5 h-3.5 text-emerald-400"></i> Minecraft Build Battle
+          </span>
+          <span class="px-3 py-1.5 rounded-full text-xs glass-card text-emerald-200 border border-emerald-400/20 flex items-center gap-1.5">
+            <i data-lucide="disc" class="w-3.5 h-3.5 text-emerald-400"></i> Dinner Food Roulette
+          </span>
+          <span class="px-3 py-1.5 rounded-full text-xs glass-card text-emerald-200 border border-emerald-400/20 flex items-center gap-1.5">
+            <i data-lucide="ghost" class="w-3.5 h-3.5 text-emerald-400"></i> Maddie Plays FNAF while you eat
+          </span>
+          <span class="px-3 py-1.5 rounded-full text-xs glass-card text-emerald-200 border border-emerald-400/20 flex items-center gap-1.5">
+            <i data-lucide="palette" class="w-3.5 h-3.5 text-emerald-400"></i> Canva Vision Board
+          </span>
+          <span class="px-3 py-1.5 rounded-full text-xs glass-card text-emerald-200 border border-emerald-400/20 flex items-center gap-1.5">
+            <i data-lucide="tv" class="w-3.5 h-3.5 text-emerald-400"></i> WandaVision / Marvel / Hunger Games
+          </span>
+          <span class="px-3 py-1.5 rounded-full text-xs glass-card text-emerald-200 border border-emerald-400/20 flex items-center gap-1.5">
+            <i data-lucide="gift" class="w-3.5 h-3.5 text-warmGold"></i> Secret Surprise Activities
+          </span>
+        </div>
+
+        <!-- Slide Controls -->
+        <div class="flex items-center gap-4 mt-4">
+          <button onclick="goToSlide(0)" class="px-5 py-3 rounded-full text-xs text-forest-300 hover:text-white glass-card border border-forest-700 transition flex items-center gap-1.5">
+            <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
+            <span>Back</span>
+          </button>
+          
+          <button onclick="goToSlide(2)" class="shimmer-btn px-8 py-3.5 rounded-full text-white font-medium text-sm sm:text-base flex items-center gap-3 shadow-xl group border border-emerald-400/40">
+            <span>Slip into the Date Plan</span>
+            <i data-lucide="arrow-right" class="w-4 h-4 text-emerald-200 group-hover:translate-x-1 transition-transform"></i>
+          </button>
+        </div>
+
+        <!-- Progress Indicator -->
+        <div class="flex items-center gap-2 mt-10">
+          <span class="w-2 h-1.5 rounded-full bg-forest-800"></span>
+          <span class="w-8 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)]"></span>
+          <span class="w-2 h-1.5 rounded-full bg-forest-800"></span>
+          <span class="text-[11px] text-forest-400 ml-2 font-mono">2 / 3</span>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ────────────────────────────────────────────────────────
+         SLIDE 3: THE TRUE WEBSITE HOME PAGE (Full Date Experience)
+    ──────────────────────────────────────────────────────── -->
+    <div class="slide-panel">
+      <div id="trueHomePage" class="min-h-screen pt-24 pb-28 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto relative z-10">
+        
+        <!-- ==============================================
+             HERO HEADER OF THE TRUE HOME PAGE
+        ============================================== -->
+        <section class="text-center pt-8 pb-16 relative">
+          
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-gold text-warmGold text-xs uppercase tracking-widest mb-6 shadow-sm border border-warmGold/30">
+            <i data-lucide="calendar-heart" class="w-3.5 h-3.5"></i>
+            <span>Official Date Itinerary &bull; Handcrafted for Sahil</span>
+          </div>
+
+          <h1 class="font-serif text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white mb-6 leading-tight">
+            An Evening Planned <br />
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 via-emerald-400 to-teal-200">
+              with All My Heart
+            </span>
+          </h1>
+
+          <p class="font-script text-2xl sm:text-3xl text-emerald-200/90 italic mb-8 max-w-2xl mx-auto">
+            "Your only job is to be ready, look handsome, and let me take care of every detail."
+          </p>
+
+          <!-- Quick Navigation Bar for Home Page Sections -->
+          <div class="flex flex-wrap items-center justify-center gap-2.5 max-w-2xl mx-auto mb-10">
+            <a href="#itinerary" class="px-4 py-2 rounded-full glass-card text-xs font-medium text-emerald-200 hover:text-white hover:border-emerald-400/50 transition flex items-center gap-1.5">
+              <i data-lucide="clock" class="w-3.5 h-3.5 text-emerald-400"></i>
+              <span>The Schedule</span>
+            </a>
+            <a href="#customizer" class="px-4 py-2 rounded-full glass-card text-xs font-medium text-emerald-200 hover:text-white hover:border-emerald-400/50 transition flex items-center gap-1.5">
+              <i data-lucide="sliders" class="w-3.5 h-3.5 text-emerald-400"></i>
+              <span>Customize Night</span>
+            </a>
+            <a href="#memories" class="px-4 py-2 rounded-full glass-card text-xs font-medium text-emerald-200 hover:text-white hover:border-emerald-400/50 transition flex items-center gap-1.5">
+              <i data-lucide="image" class="w-3.5 h-3.5 text-emerald-400"></i>
+              <span>Memories Gallery</span>
+            </a>
+            <a href="#love-letter" class="px-4 py-2 rounded-full glass-card text-xs font-medium text-warmGold hover:text-white hover:border-warmGold/50 transition flex items-center gap-1.5">
+              <i data-lucide="mail" class="w-3.5 h-3.5 text-warmGold"></i>
+              <span>Secret Letter</span>
+            </a>
+            <a href="#rsvp" class="px-4 py-2 rounded-full shimmer-btn text-xs font-medium text-white shadow-lg transition flex items-center gap-1.5">
+              <i data-lucide="heart-handshake" class="w-3.5 h-3.5"></i>
+              <span>RSVP Now</span>
+            </a>
+          </div>
+
+          <!-- Countdown & Mood Dashboard -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto">
+            
+            <!-- Countdown Box -->
+            <div class="glass-card p-5 rounded-2xl text-center border border-emerald-400/20">
+              <span class="text-[10px] tracking-wider uppercase text-emerald-400 font-semibold block mb-1">
+                Date Night Countdown
+              </span>
+              <div id="countdownTimer" class="font-serif text-2xl font-bold text-white tracking-wide">
+                --h : --m : --s
+              </div>
+              <span id="countdownSubtext" class="text-[11px] text-forest-300 font-light mt-1 block">Tonight &bull; 6:00 PM PST</span>
+            </div>
+
+            <!-- Vibe Check Box -->
+            <div class="glass-card p-5 rounded-2xl text-center border border-emerald-400/20">
+              <span class="text-[10px] tracking-wider uppercase text-emerald-400 font-semibold block mb-1">
+                Dress Code & Vibe
+              </span>
+              <div class="font-serif text-lg font-semibold text-emerald-100 flex items-center justify-center gap-2">
+                <span>Casual Chic & Cozy</span>
+                <i data-lucide="sparkle" class="w-4 h-4 text-goldChampagne"></i>
+              </div>
+              <span class="text-[11px] text-forest-300 font-light mt-1 block">Comfortable shoes + warm hugs</span>
+            </div>
+
+            <!-- Guarantee Box -->
+            <div class="glass-card p-5 rounded-2xl text-center border border-emerald-400/20">
+              <span class="text-[10px] tracking-wider uppercase text-emerald-400 font-semibold block mb-1">
+                Special Perks
+              </span>
+              <div class="font-serif text-lg font-semibold text-emerald-100">
+                100% Maddie Funded 💚
+              </div>
+              <span class="text-[11px] text-forest-300 font-light mt-1 block">Unlimited smiles & zero stress</span>
+            </div>
+
+          </div>
+        </section>
+
+
+        <!-- ==============================================
+             THE ITINERARY: ACT BY ACT
+        ============================================== -->
+        <section id="itinerary" class="py-16 scroll-mt-24">
+          
+          <div class="text-center max-w-2xl mx-auto mb-14">
+            <span class="text-xs font-semibold uppercase tracking-widest text-emerald-400">Step by Step</span>
+            <h2 class="font-serif text-3xl sm:text-5xl font-bold text-white mt-2 mb-4">The Evening Itinerary</h2>
+            <p class="text-forest-200/80 text-sm sm:text-base font-light">
+              Carefully timed, thoughtfully scheduled, and 100% customized for our favorite games, food, and laughs.
+            </p>
+          </div>
+
+          <!-- Timeline Container -->
+          <div class="relative max-w-4xl mx-auto">
+            
+            <!-- Central Line -->
+            <div class="absolute left-6 sm:left-1/2 top-4 bottom-4 w-0.5 bg-gradient-to-b from-emerald-400/40 via-forest-600 to-emerald-400/20 -translate-x-1/2"></div>
+
+            <!-- ACT 01: MINECRAFT BUILD BATTLE -->
+            <div class="relative flex flex-col sm:flex-row items-start sm:items-center justify-between mb-12 sm:mb-16 group">
+              <!-- Content Left -->
+              <div class="w-full sm:w-[45%] pl-14 sm:pl-0 sm:pr-8 sm:text-right">
+                <div class="glass-card p-6 rounded-2xl transition hover:border-emerald-400/50">
+                  <div class="flex items-center gap-2 text-emerald-300 text-xs font-mono mb-2 sm:justify-end">
+                    <i data-lucide="clock" class="w-3.5 h-3.5"></i>
+                    <span>6:00 PM PST &bull; ACT 01</span>
+                  </div>
+                  <h3 class="font-serif text-xl font-bold text-white mb-2">Minecraft Build Battle Championship</h3>
+                  <p class="text-forest-200/90 text-sm font-light leading-relaxed">
+                    Grabbing cold drinks, booting up Minecraft, and jumping straight into the arena for hilarious, high-stakes Build Battle duels. Timed rounds, wild prompt themes, judging each other's blocky creations, and chaotic banter to kick off the night.
+                  </p>
+                  <div class="mt-4 pt-3 border-t border-forest-700/60 flex items-center gap-2 sm:justify-end text-xs text-forest-300">
+                    <span class="px-2.5 py-1 rounded-full bg-forest-900/60 text-emerald-300">🧱 Build Battle Duel</span>
+                    <span class="px-2.5 py-1 rounded-full bg-forest-900/60 text-emerald-300">👑 Master Architects</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Center Dot -->
+              <div class="absolute left-6 sm:left-1/2 -translate-x-1/2 top-6 sm:top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-forest-900 border-2 border-emerald-400 flex items-center justify-center text-emerald-300 shadow-[0_0_15px_rgba(52,211,153,0.5)] z-10 group-hover:scale-110 transition">
+                <i data-lucide="blocks" class="w-4 h-4"></i>
+              </div>
+
+              <!-- Photo / Visual Right -->
+              <div class="w-full sm:w-[45%] pl-14 sm:pl-8 mt-4 sm:mt-0">
+                <div class="polaroid rotate-[2deg] max-w-[240px] sm:mx-0">
+                  <div class="w-full aspect-[4/3] overflow-hidden rounded bg-forest-900">
+                    <img src="./assets/3.jpg" alt="Gaming and laughs" class="w-full h-full object-cover" />
+                  </div>
+                  <p class="font-serif italic text-forest-900 text-[11px] mt-2 text-center">build battle duel & laughs 🎮</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- ACT 02: SAHIL'S DINNER FOOD ROULETTE -->
+            <div class="relative flex flex-col sm:flex-row items-start sm:items-center justify-between mb-12 sm:mb-16 group">
+              <!-- Visual Left -->
+              <div class="w-full sm:w-[45%] pl-14 sm:pl-0 sm:pr-8 sm:text-right order-2 sm:order-1 mt-4 sm:mt-0">
+                <div class="polaroid rotate-[-2deg] max-w-[240px] sm:ml-auto">
+                  <div class="w-full aspect-[4/3] overflow-hidden rounded bg-forest-900">
+                    <img src="./assets/7.jpg" alt="Dinner feast" class="w-full h-full object-cover" />
+                  </div>
+                  <p class="font-serif italic text-forest-900 text-[11px] mt-2 text-center">roulette feast for two 🍕</p>
+                </div>
+              </div>
+
+              <!-- Center Dot -->
+              <div class="absolute left-6 sm:left-1/2 -translate-x-1/2 top-6 sm:top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-forest-900 border-2 border-emerald-400 flex items-center justify-center text-emerald-300 shadow-[0_0_15px_rgba(52,211,153,0.5)] z-10 group-hover:scale-110 transition order-1 sm:order-2">
+                <i data-lucide="disc" class="w-4 h-4"></i>
+              </div>
+
+              <!-- Content Right -->
+              <div class="w-full sm:w-[45%] pl-14 sm:pl-8 order-1 sm:order-3">
+                <div class="glass-card p-6 rounded-2xl transition hover:border-emerald-400/50">
+                  <div class="flex items-center gap-2 text-emerald-300 text-xs font-mono mb-2">
+                    <i data-lucide="clock" class="w-3.5 h-3.5"></i>
+                    <span>7:00 PM PST &bull; ACT 02</span>
+                  </div>
+                  <h3 class="font-serif text-xl font-bold text-white mb-2">The Grand Food Roulette for Sahil</h3>
+                  <p class="text-forest-200/90 text-sm font-light leading-relaxed">
+                    No decision fatigue allowed! Sahil gets to spin the <b>Dinner Food Roulette</b> to determine tonight's mouth-watering meal. Whatever the roulette lands on, Maddie places the order and handles the bill.
+                  </p>
+
+                  <!-- Mini Interactive Roulette Button -->
+                  <div class="mt-4 p-3 rounded-xl bg-forest-950/70 border border-emerald-400/30 flex flex-col gap-2">
+                    <div class="flex items-center justify-between text-xs">
+                      <span class="text-emerald-300 font-mono">🎡 Food Roulette Wheel:</span>
+                      <span id="rouletteResultBadge" class="text-goldChampagne font-semibold font-serif">Spin to choose!</span>
+                    </div>
+                    <button onclick="spinDinnerRoulette()" class="w-full py-2 px-3 rounded-lg shimmer-btn text-white text-xs font-semibold flex items-center justify-center gap-2 transition shadow">
+                      <i data-lucide="dices" class="w-3.5 h-3.5"></i>
+                      <span>Spin Sahil's Dinner Roulette</span>
+                    </button>
+                  </div>
+
+                  <div class="mt-3 pt-2 border-t border-forest-700/60 flex items-center gap-2 text-xs text-forest-300">
+                    <span class="px-2.5 py-1 rounded-full bg-forest-900/60 text-emerald-300">🎡 Roulette Wheel</span>
+                    <span class="px-2.5 py-1 rounded-full bg-forest-900/60 text-emerald-300">💳 Maddie's Treat</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ACT 03: WATCH MADDIE PLAY FNAF WHILE YOU EAT -->
+            <div class="relative flex flex-col sm:flex-row items-start sm:items-center justify-between mb-12 sm:mb-16 group">
+              <!-- Content Left -->
+              <div class="w-full sm:w-[45%] pl-14 sm:pl-0 sm:pr-8 sm:text-right">
+                <div class="glass-card p-6 rounded-2xl transition hover:border-emerald-400/50">
+                  <div class="flex items-center gap-2 text-emerald-300 text-xs font-mono mb-2 sm:justify-end">
+                    <i data-lucide="clock" class="w-3.5 h-3.5"></i>
+                    <span>8:00 PM PST &bull; ACT 03</span>
+                  </div>
+                  <h3 class="font-serif text-xl font-bold text-white mb-2">Dinner Show: Watch Maddie Play FNAF</h3>
+                  <p class="text-forest-200/90 text-sm font-light leading-relaxed">
+                    The premier dinner entertainment! As Sahil's roulette dinner arrives, he gets to kick back with his food while Maddie puts on the gaming headset to brave <i>Five Nights at Freddy's</i>. Sahil eats in peace while Maddie panics, checks security cameras, and screams at jumpscares.
+                  </p>
+                  <div class="mt-4 pt-3 border-t border-forest-700/60 flex items-center gap-2 sm:justify-end text-xs text-forest-300">
+                    <span class="px-2.5 py-1 rounded-full bg-forest-900/60 text-emerald-300">🐻 FNAF Night Shifts</span>
+                    <span class="px-2.5 py-1 rounded-full bg-forest-900/60 text-emerald-300">😱 Jumpscares Guaranteed</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Center Dot -->
+              <div class="absolute left-6 sm:left-1/2 -translate-x-1/2 top-6 sm:top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-forest-900 border-2 border-emerald-400 flex items-center justify-center text-emerald-300 shadow-[0_0_15px_rgba(52,211,153,0.5)] z-10 group-hover:scale-110 transition">
+                <i data-lucide="ghost" class="w-4 h-4"></i>
+              </div>
+
+              <!-- Photo / Visual Right -->
+              <div class="w-full sm:w-[45%] pl-14 sm:pl-8 mt-4 sm:mt-0">
+                <div class="polaroid rotate-[3deg] max-w-[240px] sm:mx-0">
+                  <div class="w-full aspect-[4/3] overflow-hidden rounded bg-forest-900">
+                    <img src="./assets/1.jpg" alt="Dinner entertainment" class="w-full h-full object-cover" />
+                  </div>
+                  <p class="font-serif italic text-forest-900 text-[11px] mt-2 text-center">dinner & a jumpscare show 🐻</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- ACT 04: CANVA VISION BOARDING -->
+            <div class="relative flex flex-col sm:flex-row items-start sm:items-center justify-between mb-12 sm:mb-16 group">
+              <!-- Visual Left -->
+              <div class="w-full sm:w-[45%] pl-14 sm:pl-0 sm:pr-8 sm:text-right order-2 sm:order-1 mt-4 sm:mt-0">
+                <div class="polaroid rotate-[-2deg] max-w-[240px] sm:ml-auto">
+                  <div class="w-full aspect-[4/3] overflow-hidden rounded bg-forest-900">
+                    <img src="./assets/10.jpg" alt="Dreaming together" class="w-full h-full object-cover" />
+                  </div>
+                  <p class="font-serif italic text-forest-900 text-[11px] mt-2 text-center">building our future ✨</p>
+                </div>
+              </div>
+
+              <!-- Center Dot -->
+              <div class="absolute left-6 sm:left-1/2 -translate-x-1/2 top-6 sm:top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-forest-900 border-2 border-emerald-400 flex items-center justify-center text-emerald-300 shadow-[0_0_15px_rgba(52,211,153,0.5)] z-10 group-hover:scale-110 transition order-1 sm:order-2">
+                <i data-lucide="palette" class="w-4 h-4"></i>
+              </div>
+
+              <!-- Content Right -->
+              <div class="w-full sm:w-[45%] pl-14 sm:pl-8 order-1 sm:order-3">
+                <div class="glass-card p-6 rounded-2xl transition hover:border-emerald-400/50">
+                  <div class="flex items-center gap-2 text-emerald-300 text-xs font-mono mb-2">
+                    <i data-lucide="clock" class="w-3.5 h-3.5"></i>
+                    <span>9:00 PM PST &bull; ACT 04</span>
+                  </div>
+                  <h3 class="font-serif text-xl font-bold text-white mb-2">Collaborative Canva Vision Boarding</h3>
+                  <p class="text-forest-200/90 text-sm font-light leading-relaxed">
+                    Transitioning to the couch with cozy drinks to open Canva. Together we build our aesthetic future blueprint: our dream penthouse and modern battlestations, bucket-list vacations (Japan, Switzerland, beach getaways), dream cars, pets, and secret milestones.
+                  </p>
+                  <div class="mt-4 pt-3 border-t border-forest-700/60 flex items-center gap-2 text-xs text-forest-300">
+                    <span class="px-2.5 py-1 rounded-full bg-forest-900/60 text-emerald-300">🎨 Canva Vision Board</span>
+                    <span class="px-2.5 py-1 rounded-full bg-forest-900/60 text-emerald-300">🏙️ Future Blueprints</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ACT 05: WANDAVISION / MARVEL / HUNGER GAMES (WITH QUALITY CHECK) -->
+            <div class="relative flex flex-col sm:flex-row items-start sm:items-center justify-between mb-12 sm:mb-16 group">
+              <!-- Content Left -->
+              <div class="w-full sm:w-[45%] pl-14 sm:pl-0 sm:pr-8 sm:text-right">
+                <div class="glass-card p-6 rounded-2xl transition hover:border-emerald-400/50">
+                  <div class="flex items-center gap-2 text-emerald-300 text-xs font-mono mb-2 sm:justify-end">
+                    <i data-lucide="clock" class="w-3.5 h-3.5"></i>
+                    <span>10:00 PM PST &bull; ACT 05</span>
+                  </div>
+                  <h3 class="font-serif text-xl font-bold text-white mb-2">WandaVision, Marvel or Hunger Games Night</h3>
+                  <p class="text-forest-200/90 text-sm font-light leading-relaxed">
+                    Blanket fortress, warm fairy lights, and popcorn. Queueing up <i>WandaVision</i>, any classic Marvel cinematic favorite, or diving into <i>The Hunger Games</i>.
+                  </p>
+
+                  <!-- Hunger Games Quality Checker Box -->
+                  <div class="mt-4 p-3.5 rounded-xl bg-forest-950/70 border border-warmGold/30 text-left">
+                    <div class="flex items-center justify-between text-xs mb-1">
+                      <span class="text-warmGold font-semibold flex items-center gap-1.5">
+                        <i data-lucide="film" class="w-3.5 h-3.5"></i> Hunger Games Stream Quality:
+                      </span>
+                      <span id="qualityStatusBadge" class="text-emerald-400 font-mono text-[11px] font-bold">4K UHD / 60FPS</span>
+                    </div>
+                    <p class="text-[11px] text-forest-300 font-light mb-2">
+                      Checked & verified: Crisp high-definition Katniss stream with crisp audio.
+                    </p>
+                    <button onclick="verifyStreamQuality()" class="px-3 py-1 rounded bg-warmGold/20 text-warmGold border border-warmGold/40 text-[10px] hover:bg-warmGold hover:text-forest-950 transition flex items-center gap-1.5">
+                      <i data-lucide="shield-check" class="w-3 h-3"></i>
+                      <span id="qualityCheckBtnText">Re-verify Stream Quality</span>
+                    </button>
+                  </div>
+
+                  <div class="mt-4 pt-3 border-t border-forest-700/60 flex items-center gap-2 sm:justify-end text-xs text-forest-300">
+                    <span class="px-2.5 py-1 rounded-full bg-forest-900/60 text-emerald-300">📺 WandaVision / Marvel</span>
+                    <span class="px-2.5 py-1 rounded-full bg-forest-900/60 text-emerald-300">🏹 Hunger Games 4K</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Center Dot -->
+              <div class="absolute left-6 sm:left-1/2 -translate-x-1/2 top-6 sm:top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-forest-900 border-2 border-emerald-400 flex items-center justify-center text-emerald-300 shadow-[0_0_15px_rgba(52,211,153,0.5)] z-10 group-hover:scale-110 transition">
+                <i data-lucide="tv" class="w-4 h-4"></i>
+              </div>
+
+              <!-- Photo / Visual Right -->
+              <div class="w-full sm:w-[45%] pl-14 sm:pl-8 mt-4 sm:mt-0">
+                <div class="polaroid rotate-[2.5deg] max-w-[240px] sm:mx-0">
+                  <div class="w-full aspect-[4/3] overflow-hidden rounded bg-forest-900">
+                    <img src="./assets/11.jpg" alt="Cozy movie cuddles" class="w-full h-full object-cover" />
+                  </div>
+                  <p class="font-serif italic text-forest-900 text-[11px] mt-2 text-center">cuddles & movie marathon 🍿</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- ACT 06: SURPRISE ACTIVITIES AFTER -->
+            <div class="relative flex flex-col sm:flex-row items-start sm:items-center justify-between mb-8 group">
+              <!-- Visual Left -->
+              <div class="w-full sm:w-[45%] pl-14 sm:pl-0 sm:pr-8 sm:text-right order-2 sm:order-1 mt-4 sm:mt-0">
+                <div class="polaroid rotate-[-1.5deg] max-w-[240px] sm:ml-auto">
+                  <div class="w-full aspect-[4/3] overflow-hidden rounded bg-forest-900">
+                    <img src="./assets/6.jpg" alt="Late night surprise" class="w-full h-full object-cover" />
+                  </div>
+                  <p class="font-serif italic text-forest-900 text-[11px] mt-2 text-center">late night magic & surprises 🌙</p>
+                </div>
+              </div>
+
+              <!-- Center Dot -->
+              <div class="absolute left-6 sm:left-1/2 -translate-x-1/2 top-6 sm:top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-forest-900 border-2 border-emerald-400 flex items-center justify-center text-warmGold shadow-[0_0_15px_rgba(212,175,55,0.5)] z-10 group-hover:scale-110 transition order-1 sm:order-2">
+                <i data-lucide="gift" class="w-4 h-4"></i>
+              </div>
+
+              <!-- Content Right -->
+              <div class="w-full sm:w-[45%] pl-14 sm:pl-8 order-1 sm:order-3">
+                <div class="glass-card p-6 rounded-2xl transition hover:border-warmGold/50 border-warmGold/20">
+                  <div class="flex items-center gap-2 text-warmGold text-xs font-mono mb-2">
+                    <i data-lucide="clock" class="w-3.5 h-3.5"></i>
+                    <span>11:30 PM PST &bull; ACT 06</span>
+                  </div>
+                  <h3 class="font-serif text-xl font-bold text-white mb-2">Classified Surprise Activities</h3>
+                  <p class="text-forest-200/90 text-sm font-light leading-relaxed">
+                    The night doesn't end when the credits roll! Special secret surprise activities are unlocked after the movie. Tap below to scratch and reveal hints about what Maddie has prepared for you.
+                  </p>
+
+                  <!-- Interactive Surprise Clues Accordion / Reveal -->
+                  <div class="mt-4 space-y-2">
+                    <button onclick="revealSurprise(1)" class="w-full text-left p-2.5 rounded-xl bg-forest-950/60 border border-forest-700/60 text-xs flex items-center justify-between hover:border-emerald-400/50 transition">
+                      <span class="text-emerald-200">✨ Surprise Clue #1:</span>
+                      <span id="clue1" class="text-forest-400 italic">Tap to reveal clue</span>
+                    </button>
+                    <button onclick="revealSurprise(2)" class="w-full text-left p-2.5 rounded-xl bg-forest-950/60 border border-forest-700/60 text-xs flex items-center justify-between hover:border-emerald-400/50 transition">
+                      <span class="text-emerald-200">🍰 Surprise Clue #2:</span>
+                      <span id="clue2" class="text-forest-400 italic">Tap to reveal clue</span>
+                    </button>
+                    <button onclick="revealSurprise(3)" class="w-full text-left p-2.5 rounded-xl bg-forest-950/60 border border-forest-700/60 text-xs flex items-center justify-between hover:border-emerald-400/50 transition">
+                      <span class="text-emerald-200">🎁 Surprise Clue #3:</span>
+                      <span id="clue3" class="text-forest-400 italic">Tap to reveal clue</span>
+                    </button>
+                  </div>
+
+                  <div class="mt-4 pt-3 border-t border-forest-700/60 flex items-center gap-2 text-xs text-forest-300">
+                    <span class="px-2.5 py-1 rounded-full bg-forest-900/60 text-warmGold">🎁 Secret Treats</span>
+                    <span class="px-2.5 py-1 rounded-full bg-forest-900/60 text-warmGold">🌙 Endless Cuddles</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+
+        <!-- ==============================================
+             INTERACTIVE DATE CUSTOMIZER ("Build Our Night")
+        ============================================== -->
+        <section id="customizer" class="py-16 scroll-mt-24">
+          <div class="glass-card rounded-3xl p-6 sm:p-10 border border-emerald-400/20 relative overflow-hidden">
+            
+            <div class="text-center max-w-xl mx-auto mb-10">
+              <span class="text-xs font-semibold uppercase tracking-widest text-emerald-400">Personalize The Night</span>
+              <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white mt-1 mb-3">Choose Your Date Preferences</h2>
+              <p class="text-forest-200/80 text-sm font-light">
+                Tap your favorites to assemble your customized date package. I'll make sure everything is pre-ordered and ready.
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+              
+              <!-- Option Group 1: Minecraft Build Battle Theme -->
+              <div class="bg-forest-900/40 p-5 rounded-2xl border border-forest-700/60">
+                <div class="flex items-center gap-2 text-emerald-300 text-sm font-semibold mb-3">
+                  <i data-lucide="blocks" class="w-4 h-4"></i>
+                  <span>1. Minecraft Build Battle</span>
+                </div>
+                <div class="space-y-2">
+                  <label class="flex items-center gap-3 p-3 rounded-xl bg-forest-950/60 border border-forest-800 cursor-pointer hover:border-emerald-400/50 transition">
+                    <input type="radio" name="minecraft" value="Cyberpunk Sky-Penthouse" class="accent-emerald-400" checked onchange="updateTicket()" />
+                    <span class="text-xs text-forest-100">Cyberpunk Sky-Penthouse 🏙️</span>
+                  </label>
+                  <label class="flex items-center gap-3 p-3 rounded-xl bg-forest-950/60 border border-forest-800 cursor-pointer hover:border-emerald-400/50 transition">
+                    <input type="radio" name="minecraft" value="Cozy Dream Cottage & Garden" class="accent-emerald-400" onchange="updateTicket()" />
+                    <span class="text-xs text-forest-100">Cozy Dream Cottage & Garden 🏡</span>
+                  </label>
+                  <label class="flex items-center gap-3 p-3 rounded-xl bg-forest-950/60 border border-forest-800 cursor-pointer hover:border-emerald-400/50 transition">
+                    <input type="radio" name="minecraft" value="Fantasy Castle & Dragon Arena" class="accent-emerald-400" onchange="updateTicket()" />
+                    <span class="text-xs text-forest-100">Fantasy Castle & Dragon Arena 🏰</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Option Group 2: Dinner Roulette Craving -->
+              <div class="bg-forest-900/40 p-5 rounded-2xl border border-forest-700/60">
+                <div class="flex items-center gap-2 text-emerald-300 text-sm font-semibold mb-3">
+                  <i data-lucide="disc" class="w-4 h-4"></i>
+                  <span>2. Dinner Roulette Focus</span>
+                </div>
+                <div class="space-y-2">
+                  <label class="flex items-center gap-3 p-3 rounded-xl bg-forest-950/60 border border-forest-800 cursor-pointer hover:border-emerald-400/50 transition">
+                    <input type="radio" name="dinner" value="Gourmet Burgers & Truffle Fries" class="accent-emerald-400" checked onchange="updateTicket()" />
+                    <span class="text-xs text-forest-100">Gourmet Burgers & Truffle Fries 🍔</span>
+                  </label>
+                  <label class="flex items-center gap-3 p-3 rounded-xl bg-forest-950/60 border border-forest-800 cursor-pointer hover:border-emerald-400/50 transition">
+                    <input type="radio" name="dinner" value="Japanese Sushi & Crispy Gyoza" class="accent-emerald-400" onchange="updateTicket()" />
+                    <span class="text-xs text-forest-100">Japanese Sushi & Crispy Gyoza 🍣</span>
+                  </label>
+                  <label class="flex items-center gap-3 p-3 rounded-xl bg-forest-950/60 border border-forest-800 cursor-pointer hover:border-emerald-400/50 transition">
+                    <input type="radio" name="dinner" value="Creamy Pasta & Garlic Bread" class="accent-emerald-400" onchange="updateTicket()" />
+                    <span class="text-xs text-forest-100">Creamy Pasta & Garlic Bread 🍝</span>
+                  </label>
+                  <label class="flex items-center gap-3 p-3 rounded-xl bg-forest-950/60 border border-forest-800 cursor-pointer hover:border-emerald-400/50 transition">
+                    <input type="radio" name="dinner" value="Korean Fried Chicken & Bao" class="accent-emerald-400" onchange="updateTicket()" />
+                    <span class="text-xs text-forest-100">Korean Fried Chicken & Bao 🍗</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Option Group 3: Movie Feature -->
+              <div class="bg-forest-900/40 p-5 rounded-2xl border border-forest-700/60">
+                <div class="flex items-center gap-2 text-emerald-300 text-sm font-semibold mb-3">
+                  <i data-lucide="tv" class="w-4 h-4"></i>
+                  <span>3. Movie & Marathon Feature</span>
+                </div>
+                <div class="space-y-2">
+                  <label class="flex items-center gap-3 p-3 rounded-xl bg-forest-950/60 border border-forest-800 cursor-pointer hover:border-emerald-400/50 transition">
+                    <input type="radio" name="movie" value="WandaVision (Westview Anomaly Binge)" class="accent-emerald-400" checked onchange="updateTicket()" />
+                    <span class="text-xs text-forest-100">WandaVision (Sitcom Anomaly Binge) 📺</span>
+                  </label>
+                  <label class="flex items-center gap-3 p-3 rounded-xl bg-forest-950/60 border border-forest-800 cursor-pointer hover:border-emerald-400/50 transition">
+                    <input type="radio" name="movie" value="Marvel Movie (Tony Stark / Iron Man)" class="accent-emerald-400" onchange="updateTicket()" />
+                    <span class="text-xs text-forest-100">Marvel Movie (Tony Stark / Avengers) 🛡️</span>
+                  </label>
+                  <label class="flex items-center gap-3 p-3 rounded-xl bg-forest-950/60 border border-forest-800 cursor-pointer hover:border-emerald-400/50 transition">
+                    <input type="radio" name="movie" value="The Hunger Games (Catching Fire 4K)" class="accent-emerald-400" onchange="updateTicket()" />
+                    <span class="text-xs text-forest-100">The Hunger Games (Verified 4K Stream) 🏹</span>
+                  </label>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Live Generated Ticket Summary -->
+            <div class="p-6 rounded-2xl glass-gold border border-warmGold/40 max-w-2xl mx-auto text-center relative">
+              <div class="flex items-center justify-between border-b border-warmGold/20 pb-3 mb-4 text-xs font-mono text-warmGold uppercase tracking-wider">
+                <span>Voucher No. SM-2026-DATE</span>
+                <span>Admit Two &bull; VIP All Access</span>
+              </div>
+              <h4 class="font-serif text-xl font-bold text-white mb-2">Sahil's Selected Date Blueprint</h4>
+              <p id="ticketSummary" class="text-xs text-emerald-100 font-light mb-4 leading-relaxed">
+                Dinner: Gourmet Italian &bull; Snack: Matcha Parfait &bull; Movie: Iron Man 2
+              </p>
+              <button onclick="saveDateChoices()" class="px-6 py-2.5 rounded-full bg-warmGold text-forest-950 font-semibold text-xs hover:bg-goldChampagne transition shadow-md flex items-center gap-2 mx-auto">
+                <i data-lucide="check-circle" class="w-4 h-4"></i>
+                <span id="saveBtnText">Lock in These Selections 💖</span>
+              </button>
+            </div>
+
+          </div>
+        </section>
+
+
+        <!-- ==============================================
+             MEMORIES GALLERY (Polaroid Grid)
+        ============================================== -->
+        <section id="memories" class="py-16 scroll-mt-24">
+          <div class="text-center max-w-2xl mx-auto mb-12">
+            <span class="text-xs font-semibold uppercase tracking-widest text-emerald-400">Captured Moments</span>
+            <h2 class="font-serif text-3xl sm:text-5xl font-bold text-white mt-1 mb-3">Our Keepsakes</h2>
+            <p class="text-forest-200/80 text-sm font-light">
+              Just a few snapshots that remind me why doing life with you is my greatest joy.
+            </p>
+          </div>
+
+          <!-- Polaroid Grid using real assets -->
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
+            
+            <!-- Photo 1: holding.jpg -->
+            <div class="polaroid rotate-[-2deg] cursor-pointer" onclick="openPhotoModal('./assets/holding.jpg', 'holding hands through every chapter')">
+              <div class="w-full aspect-[4/5] overflow-hidden rounded-sm bg-forest-900">
+                <img src="./assets/holding.jpg" alt="Holding hands" class="w-full h-full object-cover hover:scale-105 transition duration-500" />
+              </div>
+              <p class="font-serif italic text-forest-900 text-xs mt-2 text-center">always holding you</p>
+            </div>
+
+            <!-- Photo 2: 9.jpg -->
+            <div class="polaroid rotate-[2deg] cursor-pointer" onclick="openPhotoModal('./assets/9.jpg', 'your sweet genuine smile')">
+              <div class="w-full aspect-[4/5] overflow-hidden rounded-sm bg-forest-900">
+                <img src="./assets/9.jpg" alt="Memory" class="w-full h-full object-cover hover:scale-105 transition duration-500" />
+              </div>
+              <p class="font-serif italic text-forest-900 text-xs mt-2 text-center">my favorite face</p>
+            </div>
+
+            <!-- Photo 3: 5.jpg -->
+            <div class="polaroid rotate-[-1deg] cursor-pointer" onclick="openPhotoModal('./assets/5.jpg', 'cute everyday adventures together')">
+              <div class="w-full aspect-[4/5] overflow-hidden rounded-sm bg-forest-900">
+                <img src="./assets/5.jpg" alt="Everyday moment" class="w-full h-full object-cover hover:scale-105 transition duration-500" />
+              </div>
+              <p class="font-serif italic text-forest-900 text-xs mt-2 text-center">everyday magic</p>
+            </div>
+
+            <!-- Photo 4: 2.jpg -->
+            <div class="polaroid rotate-[3deg] cursor-pointer" onclick="openPhotoModal('./assets/2.jpg', 'the sweetest memories with you')">
+              <div class="w-full aspect-[4/5] overflow-hidden rounded-sm bg-forest-900">
+                <img src="./assets/2.jpg" alt="Special memory" class="w-full h-full object-cover hover:scale-105 transition duration-500" />
+              </div>
+              <p class="font-serif italic text-forest-900 text-xs mt-2 text-center">forever grateful</p>
+            </div>
+
+          </div>
+
+          <div class="text-center mt-6">
+            <span class="text-xs text-forest-400 font-mono italic">&bull; tap any picture to view full memory &bull;</span>
+          </div>
+        </section>
+
+
+        <!-- ==============================================
+             SECRET WAX-SEALED LOVE LETTER
+        ============================================== -->
+        <section id="love-letter" class="py-16 scroll-mt-24">
+          <div class="max-w-2xl mx-auto">
+            
+            <div class="glass-card rounded-3xl p-8 sm:p-12 border border-emerald-400/20 text-center relative overflow-hidden">
+              
+              <!-- Wax Seal Button -->
+              <div class="flex flex-col items-center justify-center mb-6">
+                <div class="wax-seal mb-3" onclick="toggleLetter()" title="Click to unseal letter">
+                  <span class="font-serif text-warmGold font-bold text-lg select-none">M&S</span>
+                </div>
+                <span class="text-xs text-warmGold uppercase tracking-widest font-mono">Confidential &bull; For Sahil's Eyes Only</span>
+              </div>
+
+              <h3 class="font-serif text-2xl sm:text-3xl font-bold text-white mb-3">
+                A Letter from Maddie
+              </h3>
+              <p class="text-forest-200/80 text-sm font-light mb-6">
+                Tap the gold wax seal or the button below to break the seal and read what's inside.
+              </p>
+
+              <button onclick="toggleLetter()" id="letterToggleBtn" class="px-6 py-2.5 rounded-full border border-warmGold/40 text-warmGold text-xs font-semibold hover:bg-warmGold hover:text-forest-950 transition flex items-center gap-2 mx-auto">
+                <i data-lucide="mail-open" class="w-4 h-4"></i>
+                <span id="letterBtnLabel">Break Seal & Open Letter</span>
+              </button>
+
+              <!-- Letter Body (Collapsible) -->
+              <div id="letterContent" class="hidden text-left mt-8 pt-8 border-t border-forest-700/60 bg-forest-950/40 p-6 sm:p-8 rounded-2xl relative">
+                <div class="font-serif text-sm sm:text-base text-forest-100 leading-relaxed space-y-4 font-light">
+                  <p class="font-serif italic text-emerald-300 font-semibold text-lg">dearest sahil,</p>
+                  
+                  <p>
+                    i just wanted to say i love you. No matter what is going on, I will always love you and hold you close to my heart. You mean everything to me, and I hope that we can keep having our silly dates every day. Though you deserve better, I will do everything to turn my situation around and be that better girl for you. I love you Sahil always, and I will do everything I can for you. I made this because you bring so much sunshine, laughter, and support into my world, and you deserve a night where everything is taken care of with thoughtful love.
+                  </p>
+                  
+                  <p>
+                    Whether we are frantically placing blocks in Minecraft Build Battle, letting the food roulette decide your feast, laughing while you watch me scream my head off playing Five Nights at Freddy's, dreaming up our future on Canva, or getting cozy under blankets with WandaVision and The Hunger Games, there is nowhere I’d rather be than right beside you.
+                  </p>
+
+                  <p>
+                    Thank you for being my favorite person, my best friend, and the one who makes my heart skip a beat every single day. Get ready for tonight, especially the surprises waiting at the end! :))
+                  </p>
+
+                  <div class="pt-4 text-right">
+                    <p class="font-script italic text-2xl text-warmGold">with love,</p>
+                    <p class="font-serif font-bold text-emerald-300">Maddie 🤍</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </section>
+
+
+        <!-- ==============================================
+             THE OFFICIAL PROPOSAL & RSVP BOX
+        ============================================== -->
+        <section id="rsvp" class="py-20 scroll-mt-24 text-center">
+          <div class="max-w-xl mx-auto glass-card rounded-3xl p-8 sm:p-12 border border-emerald-400/30 relative shadow-2xl">
+            
+            <div class="inline-flex p-3 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-400/20 mb-4">
+              <i data-lucide="sparkles" class="w-6 h-6"></i>
+            </div>
+
+            <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white mb-2">
+              Will you be my date?
+            </h2>
+            <p class="text-forest-200/80 text-sm font-light mb-8 max-w-md mx-auto">
+              Please lock in your response below so the reservations can be officially sealed!
+            </p>
+
+            <!-- Buttons -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 relative min-h-[60px]" id="rsvpButtonContainer">
+              <!-- YES BUTTON -->
+              <button id="yesBtn" onclick="acceptProposal()" class="shimmer-btn px-8 py-3.5 rounded-full text-white font-semibold text-base sm:text-lg flex items-center gap-3 shadow-xl border border-emerald-300/40 w-full sm:w-auto justify-center transition-all">
+                <i data-lucide="heart" class="w-5 h-5 fill-white"></i>
+                <span>YES, Absolutely! 💚</span>
+              </button>
+
+              <!-- PLAYFUL NO BUTTON -->
+              <button id="noBtn" onmouseover="dodgeNo()" onclick="dodgeNo()" class="px-6 py-3 rounded-full bg-forest-900/80 text-forest-400 text-sm border border-forest-700/60 transition-all hover:text-rose-300 w-full sm:w-auto">
+                <span id="noBtnText">Let me think... 🤔</span>
+              </button>
+            </div>
+
+            <!-- Confirmation Message Card (Hidden initially) -->
+            <div id="rsvpSuccess" class="hidden mt-8 p-6 rounded-2xl glass-gold border border-warmGold text-left animate-fade-in">
+              <div class="flex items-center gap-3 text-warmGold font-serif font-bold text-lg mb-2">
+                <i data-lucide="party-popper" class="w-6 h-6"></i>
+                <span>Proposal Accepted! Date Confirmed 🥂✨</span>
+              </div>
+              <p class="text-xs text-forest-100 font-light leading-relaxed mb-3">
+                Reservation locked in! Calendar invite generated for Sahil & Maddie. Dress comfortable, bring your sweet appetite, and get ready for an unforgettable night!
+              </p>
+              <div class="text-[11px] font-mono text-emerald-300 border-t border-warmGold/20 pt-2">
+                STATUS: INSEPARABLE &bull; CONFIRMATION CODE: FOREVER-2026
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+
+        <!-- ==============================================
+             FOOTER
+        ============================================== -->
+        <footer class="pt-12 text-center text-xs text-forest-400 border-t border-forest-800/60 font-light space-y-2">
+          <p class="font-serif italic text-emerald-300/80 text-sm">
+            Crafted with all my love for Sahil &bull; 2026
+          </p>
+          <p>
+            Featuring The Rare Occasions &bull; Made in our cozy green sanctuary 🌿
+          </p>
+          <div class="pt-4">
+            <button onclick="goToSlide(0)" class="text-emerald-400/60 hover:text-emerald-300 text-[11px] underline">
+              ↺ View Intro Slides Again
+            </button>
+          </div>
+        </footer>
+
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- ========================================================
+       PHOTO LIGHTBOX MODAL
+  ======================================================== -->
+  <div id="photoModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 hidden" onclick="closePhotoModal()">
+    <div class="relative max-w-2xl w-full bg-forest-950 p-3 rounded-2xl border border-emerald-400/30 shadow-2xl" onclick="event.stopPropagation()">
+      <button onclick="closePhotoModal()" class="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-forest-800 text-white flex items-center justify-center border border-emerald-400/40 hover:bg-forest-700 transition">
+        &times;
+      </button>
+      <img id="modalImg" src="" alt="Enlarged view" class="w-full max-h-[75vh] object-contain rounded-xl" />
+      <p id="modalCaption" class="font-serif italic text-center text-emerald-200 text-sm mt-3 pb-1"></p>
+    </div>
+  </div>
+
+
+  <!-- ========================================================
+       SCRIPTS: SLIDESHOW, AUDIO, PARTICLES & INTERACTIVITY
+  ======================================================== -->
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+
+    /* =======================================================
+       1. SLIDESHOW / INTRO SLIP LOGIC
+    ======================================================= */
+    let currentSlide = 0;
+    const totalSlides = 3;
+    const slideDeck = document.getElementById('slideDeck');
+    const replayBtn = document.getElementById('replaySlidesBtn');
+
+    function goToSlide(index) {
+      if (index < 0 || index >= totalSlides) return;
+      currentSlide = index;
+      
+      // Ensure page is at top
+      window.scrollTo(0, 0);
+      
+      // Horizontal slip translation
+      slideDeck.style.transform = `translateX(-${currentSlide * 100}vw)`;
+
+      // Toggle top bar replay button and body scroll
+      if (currentSlide === 2) {
+        document.body.classList.remove('overflow-hidden');
+        if (replayBtn) {
+          replayBtn.classList.remove('hidden');
+          replayBtn.classList.add('flex');
+        }
+      } else {
+        document.body.classList.add('overflow-hidden');
+        if (replayBtn) {
+          replayBtn.classList.add('hidden');
+          replayBtn.classList.remove('flex');
+        }
+      }
+
+      // Re-trigger icon creation in case of dynamic DOM
+      lucide.createIcons();
+    }
+
+    // Keyboard navigation (Left / Right / Space)
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === 'PageDown') {
+        if (currentSlide < totalSlides - 1) goToSlide(currentSlide + 1);
+      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        if (currentSlide > 0) goToSlide(currentSlide - 1);
+      }
+    });
+
+    // Touch swipe support for mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+    window.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, false);
+    window.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    }, false);
+
+    function handleSwipe() {
+      const diff = touchEndX - touchStartX;
+      if (Math.abs(diff) > 50) {
+        if (diff < 0 && currentSlide < totalSlides - 1) {
+          goToSlide(currentSlide + 1);
+        } else if (diff > 0 && currentSlide > 0 && currentSlide < 2) {
+          goToSlide(currentSlide - 1);
+        }
+      }
+    }
+
+
+    /* =======================================================
+       2. ROMANTIC AUDIO PLAYER (Notion by The Rare Occasions)
+    ======================================================= */
+    const audio = document.getElementById('romanticBgm');
+    const playIcon = document.getElementById('playIcon');
+    const vinylDisc = document.getElementById('vinylDisc');
+    const eqBars = document.getElementById('eqBars');
+    const playingDot = document.getElementById('playingDot');
+    let isPlaying = false;
+
+    function toggleAudio() {
+      if (!audio) return;
+      if (isPlaying) {
+        audio.pause();
+        isPlaying = false;
+        vinylDisc.classList.add('paused-disc');
+        eqBars.classList.add('opacity-50');
+        playingDot.classList.add('hidden');
+        playIcon.setAttribute('data-lucide', 'play');
+      } else {
+        audio.play().then(() => {
+          isPlaying = true;
+          vinylDisc.classList.remove('paused-disc');
+          eqBars.classList.remove('opacity-50');
+          playingDot.classList.remove('hidden');
+          playIcon.setAttribute('data-lucide', 'pause');
+        }).catch(err => {
+          console.log("Audio autoplay prevented, user interaction required:", err);
+        });
+      }
+      lucide.createIcons();
+    }
+
+
+    /* =======================================================
+       3. FLOATING AMBIENT CANVAS PARTICLES (Fireflies / Green Dust)
+    ======================================================= */
+    const canvas = document.getElementById('ambientCanvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    class Particle {
+      constructor() {
+        this.reset();
+      }
+      reset() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 2.2 + 0.8;
+        this.speedY = -(Math.random() * 0.4 + 0.15);
+        this.speedX = (Math.random() - 0.5) * 0.3;
+        this.alpha = Math.random() * 0.6 + 0.2;
+        this.pulse = Math.random() * 0.02 + 0.01;
+      }
+      update() {
+        this.y += this.speedY;
+        this.x += this.speedX;
+        this.alpha += Math.sin(Date.now() * 0.002) * 0.005;
+        if (this.y < -10 || this.x < -10 || this.x > canvas.width + 10) {
+          this.reset();
+          this.y = canvas.height + 5;
+        }
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(110, 231, 183, ${Math.max(0.1, Math.min(0.8, this.alpha))})`;
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = '#34d399';
+        ctx.fill();
+      }
+    }
+
+    for (let i = 0; i < 45; i++) {
+      particles.push(new Particle());
+    }
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => {
+        p.update();
+        p.draw();
+      });
+      requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
+
+
+    /* =======================================================
+       3.5 LIVE COUNTDOWN TIMER (Starts at 6:00 PM PST)
+    ======================================================= */
+    function updateCountdown() {
+      const timerElem = document.getElementById('countdownTimer');
+      const subtextElem = document.getElementById('countdownSubtext');
+      if (!timerElem) return;
+
+      const now = new Date();
+      // Calculate current time in PST (UTC-8)
+      const utcTime = now.getTime() + (now.getTimezoneOffset() * 60000);
+      const pstOffset = -8 * 3600000; // PST is UTC - 8 hours
+      const pstNow = new Date(utcTime + pstOffset);
+
+      // Target is today at 6:00:00 PM PST
+      let targetPst = new Date(pstNow);
+      targetPst.setHours(18, 0, 0, 0);
+
+      let diff = targetPst.getTime() - pstNow.getTime();
+
+      if (diff <= 0) {
+        // If within 5 hours after 6 PM, date is underway!
+        if (diff > -5 * 3600000) {
+          timerElem.innerHTML = `<span class="text-emerald-300 text-lg sm:text-xl font-bold animate-pulse">IT'S DATE TIME! 💖✨</span>`;
+          if (subtextElem) subtextElem.innerHTML = `<span class="text-goldChampagne font-medium">Underway &bull; Started at 6:00 PM PST</span>`;
+          return;
+        } else {
+          // If past, set for next 6 PM
+          targetPst.setDate(targetPst.getDate() + 1);
+          diff = targetPst.getTime() - pstNow.getTime();
+        }
+      }
+
+      const hours = Math.floor(diff / 3600000);
+      const minutes = Math.floor((diff % 3600000) / 60000);
+      const seconds = Math.floor((diff % 60000) / 1000);
+
+      const hStr = String(hours).padStart(2, '0');
+      const mStr = String(minutes).padStart(2, '0');
+      const sStr = String(seconds).padStart(2, '0');
+
+      timerElem.textContent = `${hStr}h : ${mStr}m : ${sStr}s`;
+      if (subtextElem) subtextElem.innerHTML = `Tonight &bull; 6:00 PM PST`;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+
+    /* =======================================================
+       4. INTERACTIVE DATE CUSTOMIZER & ROULETTE
+    ======================================================= */
+    function updateTicket() {
+      const mc = document.querySelector('input[name="minecraft"]:checked')?.value || 'Build Battle';
+      const dinner = document.querySelector('input[name="dinner"]:checked')?.value || 'Food Roulette';
+      const movie = document.querySelector('input[name="movie"]:checked')?.value || 'Feature';
+
+      const summary = `Build: ${mc} • Roulette: ${dinner} • Movie: ${movie}`;
+      const elem = document.getElementById('ticketSummary');
+      if (elem) elem.textContent = summary;
+    }
+
+    // Sahil's Dinner Food Roulette
+    const dinnerOptions = [
+      "Gourmet Smash Burgers & Garlic Truffle Fries 🍔🍟",
+      "Authentic Japanese Sushi Platter & Crispy Gyoza 🍣🥟",
+      "Rich Creamy Fettuccine Alfredo & Garlic Bread 🍝🥖",
+      "Crispy Korean Fried Chicken & Sweet Glaze Bao 🍗🥟",
+      "Wood-Fired Margherita Pizza & Mozzarella Sticks 🍕🧀",
+      "Maddie's Special Homemade Comfort Feast 🍲💖"
+    ];
+    let isSpinningRoulette = false;
+
+    function spinDinnerRoulette() {
+      if (isSpinningRoulette) return;
+      isSpinningRoulette = true;
+      const badge = document.getElementById('rouletteResultBadge');
+      let counter = 0;
+      const spinInterval = setInterval(() => {
+        const randDish = dinnerOptions[Math.floor(Math.random() * dinnerOptions.length)];
+        if (badge) badge.textContent = randDish;
+        counter++;
+        if (counter > 14) {
+          clearInterval(spinInterval);
+          const finalPick = dinnerOptions[Math.floor(Math.random() * dinnerOptions.length)];
+          if (badge) badge.textContent = `WINNER: ${finalPick} 🎉`;
+          isSpinningRoulette = false;
+
+          // Confetti celebration
+          confetti({
+            particleCount: 50,
+            spread: 70,
+            origin: { y: 0.6 },
+            colors: ['#34d399', '#f0dfb8', '#10b981', '#f59e0b']
+          });
+        }
+      }, 90);
+    }
+
+    // Hunger Games Stream Quality Scanner
+    let isCheckingQuality = false;
+    function verifyStreamQuality() {
+      if (isCheckingQuality) return;
+      isCheckingQuality = true;
+      const statusBadge = document.getElementById('qualityStatusBadge');
+      const btnText = document.getElementById('qualityCheckBtnText');
+      if (statusBadge) statusBadge.textContent = "Scanning bitrate & buffers...";
+      if (btnText) btnText.textContent = "Scanning stream...";
+
+      setTimeout(() => {
+        if (statusBadge) statusBadge.textContent = "✅ Certified 4K UHD (2160p) • 48 Mbps • Crisp Stream!";
+        if (btnText) btnText.textContent = "Verified! (Katniss 4K Ready 🏹)";
+        isCheckingQuality = false;
+        confetti({
+          particleCount: 30,
+          spread: 50,
+          origin: { y: 0.7 },
+          colors: ['#fbbf24', '#34d399']
+        });
+      }, 1200);
+    }
+
+    // Surprise Activities Clue Reveals
+    const surpriseClues = {
+      1: "🌌 Midnight Stargaze Drive & Aux Pass Serenade (holding hands under the night sky)",
+      2: "🍦 Secret Midnight Sweet-Tooth Run (warm cookies & matcha ice cream)",
+      3: "🧸 Maddie's Keepsake Mystery Gift & Cozy Blanket Cuddle Session"
+    };
+
+    function revealSurprise(num) {
+      const clueElem = document.getElementById(`clue${num}`);
+      if (clueElem) {
+        clueElem.textContent = surpriseClues[num];
+        clueElem.classList.remove('italic', 'text-forest-400');
+        clueElem.classList.add('text-goldChampagne', 'font-medium');
+        confetti({
+          particleCount: 20,
+          spread: 40,
+          origin: { y: 0.75 },
+          colors: ['#f0dfb8', '#34d399']
+        });
+      }
+    }
+
+    function saveDateChoices() {
+      const btn = document.getElementById('saveBtnText');
+      if (btn) {
+        btn.textContent = "Locked in & Saved! 💌";
+        setTimeout(() => {
+          btn.textContent = "Lock in These Selections 💖";
+        }, 2500);
+      }
+      confetti({
+        particleCount: 40,
+        spread: 60,
+        origin: { y: 0.7 },
+        colors: ['#34d399', '#f0dfb8', '#10b981']
+      });
+    }
+
+
+    /* =======================================================
+       5. SECRET WAX-SEALED LOVE LETTER
+    ======================================================= */
+    let letterOpen = false;
+    function toggleLetter() {
+      const content = document.getElementById('letterContent');
+      const label = document.getElementById('letterBtnLabel');
+      letterOpen = !letterOpen;
+      
+      if (letterOpen) {
+        content.classList.remove('hidden');
+        label.textContent = "Fold & Reseal Letter";
+        confetti({
+          particleCount: 25,
+          spread: 45,
+          origin: { y: 0.6 },
+          colors: ['#e5c98d', '#34d399']
+        });
+      } else {
+        content.classList.add('hidden');
+        label.textContent = "Break Seal & Open Letter";
+      }
+    }
+
+
+    /* =======================================================
+       6. PLAYFUL PROPOSAL & DODGING NO BUTTON
+    ======================================================= */
+    let dodgeCount = 0;
+    const dodgePhrases = [
+      "Wait, think again! 🥺",
+      "Are you suuuure? 👀",
+      "Error: Button broken, try YES! 😆",
+      "Nice try mister! 💚",
+      "Almost got me! 🙈",
+      "YES is looking really good right now ✨"
+    ];
+
+    function dodgeNo() {
+      const noBtn = document.getElementById('noBtn');
+      const noText = document.getElementById('noBtnText');
+      const yesBtn = document.getElementById('yesBtn');
+      dodgeCount++;
+
+      // Change text playfully
+      noText.textContent = dodgePhrases[dodgeCount % dodgePhrases.length];
+
+      // Grow yes button
+      const scale = 1 + Math.min(dodgeCount * 0.12, 0.6);
+      yesBtn.style.transform = `scale(${scale})`;
+
+      // Run away slightly on screen
+      const randomX = (Math.random() - 0.5) * 160;
+      const randomY = (Math.random() - 0.5) * 80;
+      noBtn.style.transform = `translate(${randomX}px, ${randomY}px)`;
+    }
+
+    function acceptProposal() {
+      const successCard = document.getElementById('rsvpSuccess');
+      const yesBtn = document.getElementById('yesBtn');
+      const noBtn = document.getElementById('noBtn');
+
+      if (successCard) successCard.classList.remove('hidden');
+      if (noBtn) noBtn.classList.add('hidden');
+      yesBtn.innerHTML = `<i data-lucide="check" class="w-5 h-5"></i><span>Officially My Date! 💚</span>`;
+      yesBtn.classList.remove('shimmer-btn');
+      yesBtn.classList.add('bg-emerald-500');
+
+      // Grand Emerald & Gold Confetti Explosion
+      const duration = 3.5 * 1000;
+      const end = Date.now() + duration;
+
+      (function frame() {
+        confetti({
+          particleCount: 6,
+          angle: 60,
+          spread: 55,
+          origin: { x: 0 },
+          colors: ['#10b981', '#34d399', '#f0dfb8', '#ffffff']
+        });
+        confetti({
+          particleCount: 6,
+          angle: 120,
+          spread: 55,
+          origin: { x: 1 },
+          colors: ['#10b981', '#34d399', '#f0dfb8', '#ffffff']
+        });
+
+        if (Date.now() < end) {
+          requestAnimationFrame(frame);
+        }
+      }());
+
+      lucide.createIcons();
+    }
+
+
+    /* =======================================================
+       7. PHOTO LIGHTBOX
+    ======================================================= */
+    function openPhotoModal(src, caption) {
+      const modal = document.getElementById('photoModal');
+      const img = document.getElementById('modalImg');
+      const cap = document.getElementById('modalCaption');
+      img.src = src;
+      cap.textContent = caption;
+      modal.classList.remove('hidden');
+    }
+    function closePhotoModal() {
+      document.getElementById('photoModal').classList.add('hidden');
+    }
+
+    /* Initialize Customizer summary */
+    updateTicket();
+  </script>
+</body>
+</html>
